@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 
 from config import load_config, save_config
 from duedate_content import add_duedate_content, get_duedate_html
+from news_content import add_news_content, get_news_html
 from weather_content import add_weather, get_weather_html
 
 load_dotenv()
@@ -27,13 +28,30 @@ def list_content():
     print("Email content:")
 
     for index, item in enumerate(content, start=1):
-        if item["type"] == "weather":
+        content_type = item.get("type")
+
+        if content_type == "weather":
             print(
-                f"{index}. Weather: {item['location_name']} "
-                f"({item['latitude']}, {item['longitude']})"
+                f"{index}. Weather: {item.get('location_name', 'Unknown Location')} "
+                f"({item.get('latitude')}, {item.get('longitude')})"
             )
-        elif item["type"] == "calendar":
-            print(f"{index}. Calendar: {item['title']}")
+
+        elif content_type == "duedate":
+            print(
+                f"{index}. Due Date: {item.get('title', 'Assignments')}"
+            )
+
+        elif content_type == "news":
+            print(
+                f"{index}. News: {item.get('title', 'News')} "
+                f"({item.get('category', 'general')})"
+            )
+
+        elif content_type == "calendar":
+            print(
+                f"{index}. Calendar: {item.get('title', 'Calendar')}"
+            )
+
         else:
             print(f"{index}. Unknown content type: {item}")
 
@@ -67,6 +85,10 @@ def build_email_html():
             sections.append(get_weather_html(item))
         elif item["type"] == "calendar":
             sections.append(get_calendar_html(item))
+        elif item["type"] == "duedate":
+            sections.append(get_duedate_html(item))
+        elif item["type"] == "news":
+            sections.append(get_news_html(item))
 
     content_html = "\n".join(sections)
 
@@ -123,6 +145,8 @@ def main():
     subparsers.add_parser("send")
     subparsers.add_parser("content")
     subparsers.add_parser("add-calendar")
+    subparsers.add_parser("add-duedate")
+    subparsers.add_parser("add-news")
 
     delete_parser = subparsers.add_parser("delete-content")
     delete_parser.add_argument("index", type=int)
@@ -148,6 +172,16 @@ def main():
     elif args.command == "add-calendar":
         config = load_config()
         message = add_calendar_content(config)
+        save_config(config)
+        print(message)
+    elif args.command == "add-duedate":
+        config = load_config()
+        message = add_duedate_content(config)
+        save_config(config)
+        print(message)
+    elif args.command == "add-news":
+        config = load_config()
+        message = add_news_content(config)
         save_config(config)
         print(message)
 
