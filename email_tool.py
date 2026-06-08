@@ -85,9 +85,20 @@ def list_content():
     for index, item in enumerate(content, start=1):
         if item["type"] == "weather":
             print(
-                f"{index}. Weather: {item['location_name']} "
-                f"({item['latitude']}, {item['longitude']})"
+                f"{index}. Weather ({item['location_name']})"
             )
+
+        elif item["type"] == "duedate":
+            print(
+                f"{index}. {item['title']}"
+            )
+
+        elif item["type"] == "news":
+            print(
+                f"{index}. {item['title']} "
+                f"({item.get('category', 'general')})"
+            )
+
         else:
             print(f"{index}. Unknown content type: {item}")
 
