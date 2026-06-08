@@ -13,6 +13,7 @@ from config import load_config, save_config
 from duedate_content import add_duedate_content, get_duedate_html
 from news_content import add_news_content, get_news_html
 from weather_content import add_weather, get_weather_html
+from news_content import get_news_html
 
 load_dotenv()
 
@@ -87,6 +88,12 @@ def build_email_html():
             sections.append(get_calendar_html(item))
         elif item["type"] == "duedate":
             sections.append(get_duedate_html(item))
+        elif item["type"] == "news":
+            sections.append(get_news_html(item))
+
+        elif item["type"] == "duedate":
+            sections.append(get_duedate_html(item))
+
         elif item["type"] == "news":
             sections.append(get_news_html(item))
 
