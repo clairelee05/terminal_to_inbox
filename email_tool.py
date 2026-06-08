@@ -11,6 +11,10 @@ import matplotlib.pyplot as plt
 import requests
 from dotenv import load_dotenv
 
+from weather_content import get_weather_html
+from duedate_content import get_duedate_html
+from news_content import get_news_html
+
 load_dotenv()
 
 CONFIG_PATH = Path.home() / ".email_tool_config.json"
@@ -183,6 +187,12 @@ def build_email_html():
     for item in config.get("content", []):
         if item["type"] == "weather":
             sections.append(get_weather_html(item))
+
+        elif item["type"] == "duedate":
+            sections.append(get_duedate_html(item))
+
+        elif item["type"] == "news":
+            sections.append(get_news_html(item))
 
     content_html = "\n".join(sections)
 
