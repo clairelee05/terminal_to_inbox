@@ -3,7 +3,7 @@ name = "dsc190-finalproject"
 version = "0.1.0"
 description = "Terminal to Inbox daily email digest tool"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
     "google-api-python-client>=2.197.0",
     "google-auth-httplib2>=0.4.0",
