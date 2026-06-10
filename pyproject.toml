@@ -1,7 +1,7 @@
 [project]
 name = "dsc190-finalproject"
 version = "0.1.0"
-description = "Add your description here"
+description = "Terminal to Inbox daily email digest tool"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -12,6 +12,9 @@ dependencies = [
     "python-dotenv>=1.2.2",
     "requests>=2.34.2",
 ]
+
+[project.scripts]
+terminal-to-inbox = "email_tool:main"
 
 [dependency-groups]
 dev = [
