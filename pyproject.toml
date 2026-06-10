@@ -3,14 +3,14 @@ name = "terminal-to-inbox"
 version = "0.1.0"
 description = "Terminal to Inbox daily email digest tool"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.8"
 dependencies = [
-    "google-api-python-client>=2.197.0",
-    "google-auth-httplib2>=0.4.0",
-    "google-auth-oauthlib>=1.4.0",
-    "matplotlib>=3.8",
-    "python-dotenv>=1.2.2",
-    "requests>=2.34.2",
+    "google-api-python-client>=2.100.0",
+    "google-auth-httplib2>=0.1.0",
+    "google-auth-oauthlib>=1.0.0",
+    "matplotlib>=3.7",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
 ]
 
 [project.scripts]
@@ -33,5 +33,5 @@ py-modules = [
 
 [dependency-groups]
 dev = [
-    "black>=26.5.1",
+    "black>=24.0.0",
 ]

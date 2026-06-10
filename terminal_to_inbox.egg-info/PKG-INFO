@@ -2,14 +2,14 @@ Metadata-Version: 2.4
 Name: terminal-to-inbox
 Version: 0.1.0
 Summary: Terminal to Inbox daily email digest tool
-Requires-Python: >=3.10
+Requires-Python: >=3.8
 Description-Content-Type: text/markdown
-Requires-Dist: google-api-python-client>=2.197.0
-Requires-Dist: google-auth-httplib2>=0.4.0
-Requires-Dist: google-auth-oauthlib>=1.4.0
-Requires-Dist: matplotlib>=3.8
-Requires-Dist: python-dotenv>=1.2.2
-Requires-Dist: requests>=2.34.2
+Requires-Dist: google-api-python-client>=2.100.0
+Requires-Dist: google-auth-httplib2>=0.1.0
+Requires-Dist: google-auth-oauthlib>=1.0.0
+Requires-Dist: matplotlib>=3.7
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: requests>=2.31.0
 
 # Terminal to Inbox
 
